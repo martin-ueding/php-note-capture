@@ -1,3 +1,4 @@
+<?PHP /* Copyright (c) 2011 Martin Ueding <dev@martin-ueding.de> */ ?>
 <form action="save_note.php" method="post">
 <textarea name="note"></textarea>
 <input type="submit" value="save" />
