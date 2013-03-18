@@ -10,21 +10,22 @@
 class Notes {
 	private $path = 'notes.js';
 
-	private $data = array();
+	public $data = array();
 
 	public function __construct() {
 		if (file_exists($this->path)) {
-			$this->data = json_decode($this->path);
+			$this->data = json_decode(file_get_contents($this->path), true);
 		}
 	}
 
 	public function __destruct() {
+		$encoded = json_encode($this->data);
+
 		$h = fopen($this->path, 'w');
 		if ($h === false) {
-			var_dump($this->data);
 			die();
 		}
-		fwrite($h, json_encode($this->data));
+		fwrite($h, $encoded);
 		fclose($h);
 	}
 
@@ -32,7 +33,7 @@ class Notes {
 		$note = array(
 			'text' => $text,
 		);
-		array_push($note);
+		$this->data[] = $note;
 	}
 }
 
