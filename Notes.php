@@ -13,19 +13,16 @@ class Notes {
 	private $data = array();
 
 	public function __construct() {
-		echo 'Construct';
-
 		if (file_exists($this->path)) {
 			$this->data = json_decode($this->path);
 		}
 	}
 
 	public function __destruct() {
-		echo 'Destruct';
-
 		$h = fopen($this->path, 'w');
 		if ($h === false) {
-			die('Cannot save. Abort.');
+			var_dump($this->data);
+			die();
 		}
 		fwrite($h, json_encode($this->data));
 		fclose($h);
