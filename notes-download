@@ -37,20 +37,26 @@ def main():
 
     try:
         subprocess.check_call(["wget", "-O", notesfile, "--user", user,
-                               "--password", passwd, uri])
+                               "--password", passwd, uri],
+                                stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     except subprocess.CalledProcessError as e:
         raise
 
     notes = load_notes()
 
-    print(notes)
-
     try:
-        for note in notes:
-            subprocess.check_call(["task", "add", note["text"]])
+        if len(notes) > 0:
+            for note in notes:
+                text = note["text"]
+                subprocess.check_call(["task", "add", text])
+                print("Note “{}” created.".format(text))
 
-        subprocess.check_call(["wget", "-O", "/dev/null", "--user", user,
-                               "--password", passwd, reseturl])
+            subprocess.check_call(["wget", "-O", "/dev/null", "--user", user,
+                                   "--password", passwd, reseturl],
+                                  stdout=subprocess.PIPE,
+                                  stderr=subprocess.PIPE)
+        else:
+            print("No new notes. Done.")
     except subprocess.CalledProcessError as e:
         raise
 
