@@ -35,6 +35,10 @@ class Notes {
 		);
 		$this->data[] = $note;
 	}
+
+	public function reset() {
+		$this->data = array();
+	}
 }
 
 ?>
