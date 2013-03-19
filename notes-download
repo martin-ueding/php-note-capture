@@ -17,7 +17,7 @@ import subprocess
 
 __docformat__ = "restructuredtext en"
 
-configfile = "config.ini"
+configfile = os.path.expanduser("~/.config/php-note-capture/config.ini")
 notesfile = "notes.js"
 
 def main():
