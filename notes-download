@@ -30,6 +30,7 @@ def main():
     uri = config.get("auth", "uri")
     user = config.get("auth", "user")
     passwd = config.get("auth", "passwd")
+    reseturl = config.get("reset", "reseturl")
 
     if os.path.isfile(notesfile):
         os.remove(notesfile)
@@ -40,10 +41,18 @@ def main():
     except subprocess.CalledProcessError as e:
         raise
 
-
     notes = load_notes()
 
     print(notes)
+
+    try:
+        for note in notes:
+            subprocess.check_call(["task", "add", note["text"]])
+
+        subprocess.check_call(["wget", "-O", "/dev/null", "--user", user,
+                               "--password", passwd, reseturl])
+    except subprocess.CalledProcessError as e:
+        raise
 
 
 def load_notes():
