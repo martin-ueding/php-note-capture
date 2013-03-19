@@ -1,0 +1,63 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+
+# Copyright © 2013 Martin Ueding <dev@martin-ueding.de>
+
+"""
+Downloads the notes in the JSON format and inserts them in the taskwarrior
+database.
+"""
+
+import argparse
+import urllib.request
+import configparser
+import os.path
+
+__docformat__ = "restructuredtext en"
+
+configfile = "config.ini"
+
+def main():
+    options = _parse_args()
+
+    config = configparser.ConfigParser()
+    config.read(configfile)
+
+    realm = config.get("auth", "realm")
+    uri = config.get("auth", "uri")
+    user = config.get("auth", "user")
+    passwd = config.get("auth", "passwd")
+
+    auth_handler = urllib.request.HTTPBasicAuthHandler()
+    auth_handler.add_password(
+        realm=realm,
+        uri=uri,
+        user=user,
+        passwd=passwd,
+    )
+    urllib.request.install_opener(auth_handler)
+    f = urllib.request.urlretrieve(uri)
+
+    try:
+        subprocess.check_call(["wget", "-o", "notes.js", "--user", user, "--password", passwd, uri])
+    except subprocess.CalledProcessError as e:
+        raise
+
+
+def _parse_args():
+    """
+    Parses the command line arguments.
+
+    :return: Namespace with arguments.
+    :rtype: Namespace
+    """
+    parser = argparse.ArgumentParser(description="")
+    #parser.add_argument("args", metavar="N", type=str, nargs="*", help="Positional arguments.")
+    #parser.add_argument("", dest="", type="", default=, help=)
+    #parser.add_argument("--version", action="version", version="<the version>")
+
+    return parser.parse_args()
+
+
+if __name__ == "__main__":
+    main()
