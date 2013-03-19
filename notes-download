@@ -9,13 +9,16 @@ database.
 """
 
 import argparse
-import urllib.request
 import configparser
+import json
+import os
 import os.path
+import subprocess
 
 __docformat__ = "restructuredtext en"
 
 configfile = "config.ini"
+notesfile = "notes.js"
 
 def main():
     options = _parse_args()
@@ -28,20 +31,24 @@ def main():
     user = config.get("auth", "user")
     passwd = config.get("auth", "passwd")
 
-    auth_handler = urllib.request.HTTPBasicAuthHandler()
-    auth_handler.add_password(
-        realm=realm,
-        uri=uri,
-        user=user,
-        passwd=passwd,
-    )
-    urllib.request.install_opener(auth_handler)
-    f = urllib.request.urlretrieve(uri)
+    if os.path.isfile(notesfile):
+        os.remove(notesfile)
 
     try:
-        subprocess.check_call(["wget", "-o", "notes.js", "--user", user, "--password", passwd, uri])
+        subprocess.check_call(["wget", "-O", notesfile, "--user", user,
+                               "--password", passwd, uri])
     except subprocess.CalledProcessError as e:
         raise
+
+
+    notes = load_notes()
+
+    print(notes)
+
+
+def load_notes():
+    with open(notesfile) as f:
+        return json.loads(f.read())
 
 
 def _parse_args():
