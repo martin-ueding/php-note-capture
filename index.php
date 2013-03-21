@@ -22,8 +22,8 @@ if (isset($_POST['text'])) {
 			}
 		</style>
 	</head>
-	<body>
-		<form action="index.php" method="post">
+	<body onload="javascript:document.mainform.text.focus()">
+		<form action="index.php" method="post" name="mainform">
 			<input type="text" name="text" />
 			<input type="submit" />
 		</form>
