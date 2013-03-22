@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
 # Copyright © 2012-2013 Martin Ueding <dev@martin-ueding.de>
@@ -11,9 +11,13 @@ setup(
     author = "Martin Ueding",
     author_email = "dev@martin-ueding.de",
     classifiers = [
+        "Development Status :: 5 - Production/Stable",
         "Environment :: Console",
-        "Programming Language :: Python",
+        "License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)",
+        "Natural Language :: English",
         "Programming Language :: PHP",
+        "Programming Language :: Python :: 3",
+        "Topic :: Office/Business",
 
     ],
     description = "Online notes for Taskwarrior",
