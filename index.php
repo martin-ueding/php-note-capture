@@ -15,6 +15,7 @@ if (isset($_POST['text'])) {
 <html>
 	<head>
 		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
 		<title>Notes</title>
 		<style type="text/css">
 			input {
