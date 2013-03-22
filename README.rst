@@ -31,4 +31,31 @@ locally
 - Python 3
 - Taskwarrior_ as the ``task`` command
 
+installation
+============
+
+#. Copy the ``.php`` files onto your webserver.
+#. Protect the directory with a ``.htacces`` file.
+#. Install a ``~/.config/php-note-capture/config.ini`` files and define the
+   following::
+
+    [auth]
+    realm =
+    uri =
+    user =
+    passwd =
+
+    [reset]
+    reseturl =
+
+#. Set up Taskwarrior_ so that ``task add`` can be called.
+#. Run ``./setup install`` or ``./setup install --user`` to install the
+   ``notes-download`` script.
+
+license
+=======
+
+This program is licensed under the *GNU Affero General Public License v3 or
+later (AGPLv3+)*.
+
 .. _Taskwarrior: http://taskwarrior.org/
