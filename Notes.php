@@ -30,10 +30,16 @@ class Notes {
 	}
 
 	public function addNote($text) {
+		# Filter out empty notes.
+		if (strlen($text) == 0) {
+			return;
+		}
+
 		$newNote = array(
 			'text' => $text,
 		);
 
+		# Filter out duplicate notes.
 		foreach ($this->data as $note) {
 			if ($note == $newNote) {
 				return;
