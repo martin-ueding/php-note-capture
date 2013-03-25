@@ -30,10 +30,17 @@ class Notes {
 	}
 
 	public function addNote($text) {
-		$note = array(
+		$newNote = array(
 			'text' => $text,
 		);
-		$this->data[] = $note;
+
+		foreach ($this->data as $note) {
+			if ($note == $newNote) {
+				return;
+			}
+		}
+
+		$this->data[] = $newNote;
 	}
 
 	public function reset() {
