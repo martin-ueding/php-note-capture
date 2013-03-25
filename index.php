@@ -32,7 +32,7 @@ if (isset($_POST['text'])) {
 		<ul>
 		<?php
 		foreach ($notes->data as $note) {
-			echo '<li>'.($note['text']).'</li>';
+			echo '<li>'.htmlspecialchars($note['text']).'</li>';
 		}
 		?>
 		</ul>
