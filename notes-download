@@ -60,6 +60,8 @@ def main():
     except subprocess.CalledProcessError as e:
         raise
 
+    os.unlink(notesfile)
+
 
 def load_notes():
     with open(notesfile) as f:
