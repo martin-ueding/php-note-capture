@@ -25,7 +25,7 @@ if (isset($_POST['text'])) {
 	</head>
 	<body onload="javascript:document.mainform.text.focus()">
 		<form action="index.php" method="post" name="mainform">
-			<input type="text" name="text" />
+			<input type="text" name="text" autocomplete="off" />
 			<input type="submit" />
 		</form>
 
