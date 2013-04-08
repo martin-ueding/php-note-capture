@@ -16,6 +16,7 @@ if (isset($_POST['text'])) {
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 		<title>Notes</title>
 		<style type="text/css">
 			input {
