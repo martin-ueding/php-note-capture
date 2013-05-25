@@ -6,7 +6,7 @@ require_once('Notes.php');
 $notes = new Notes();
 
 if (isset($_POST['text'])) {
-	$notes->addNote($_POST['text']);
+	$notes->addNote($_POST['text'], $_POST['priority']);
 }
 
 ?>
@@ -27,13 +27,19 @@ if (isset($_POST['text'])) {
 	<body onload="javascript:document.mainform.text.focus()">
 		<form action="index.php" method="post" name="mainform">
 			<input type="text" name="text" autocomplete="off" />
+			<select name="priority" size="1">
+				<option value=""></option>
+				<option value="l">low</option>
+				<option value="m">medium</option>
+				<option value="h">high</option>
+			</select>
 			<input type="submit" />
 		</form>
 
 		<ul>
 		<?php
 		foreach ($notes->data as $note) {
-			echo '<li>'.htmlspecialchars($note['text']).'</li>';
+			echo '<li>'.htmlspecialchars($note['text']).' ('.$note['priority'].')</li>';
 		}
 		?>
 		</ul>

@@ -48,7 +48,11 @@ def main():
         if len(notes) > 0:
             for note in notes:
                 text = note["text"]
-                subprocess.check_call(["task", "add", text])
+                command = ["task", "add", text]
+                if "priority" in note:
+                    command += ["pri:{}".format(note["priority"])]
+
+                subprocess.check_call(command)
                 print("Note “{}” created.".format(text))
 
             subprocess.check_call(["wget", "-O", "/dev/null", "--user", user,

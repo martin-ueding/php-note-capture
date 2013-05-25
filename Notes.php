@@ -29,7 +29,7 @@ class Notes {
 		fclose($h);
 	}
 
-	public function addNote($text) {
+	public function addNote($text, $priority='') {
 		# Filter out empty notes.
 		if (strlen($text) == 0) {
 			return;
@@ -37,11 +37,12 @@ class Notes {
 
 		$newNote = array(
 			'text' => $text,
+			'priority' => $priority
 		);
 
 		# Filter out duplicate notes.
 		foreach ($this->data as $note) {
-			if ($note == $newNote) {
+			if ($note["text"] == $newNote["text"]) {
 				return;
 			}
 		}
