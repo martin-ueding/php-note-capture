@@ -29,9 +29,9 @@ if (isset($_POST['text'])) {
 			<input type="text" name="text" autocomplete="off" />
 			<select name="priority" size="1">
 				<option value=""></option>
-				<option value="l">low</option>
-				<option value="m">medium</option>
 				<option value="h">high</option>
+				<option value="m">medium</option>
+				<option value="l">low</option>
 			</select>
 			<input type="submit" />
 		</form>
