@@ -22,6 +22,11 @@ if (isset($_POST['text'])) {
 			input {
 				font-size: 20px;
 			}
+
+			td.priority {
+				color: #444;
+				font-size: 80%;
+			}
 		</style>
 	</head>
 	<body onload="javascript:document.mainform.text.focus()">
@@ -36,12 +41,15 @@ if (isset($_POST['text'])) {
 			<input type="submit" />
 		</form>
 
-		<ul>
-		<?php
-		foreach ($notes->data as $note) {
-			echo '<li>'.htmlspecialchars($note['text']).' ('.$note['priority'].')</li>';
-		}
-		?>
-		</ul>
+		<?php if (count($notes->data) > 0): ?>
+		<table>
+			<?php foreach ($notes->data as $note): ?>
+			<tr>
+				<td><?= htmlspecialchars($note['text']) ?></td>
+				<td class="priority"><?= $note['priority'] ?></td>
+			</tr>
+			<?php endforeach; ?>
+		</table>
+		<?php endif; ?>
 	</body>
 </html>
