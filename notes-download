@@ -52,7 +52,11 @@ def main():
                 if "priority" in note:
                     priority = note["priority"]
                     if priority in ["l", "h", "m"]:
-                        command += ["pri:{}".format(command)]
+                        command += ["pri:{}".format(priority)]
+
+                if "entry" in note:
+                    entry = note["entry"]
+                    command += ["entry:{}".format(entry)]
 
                 subprocess.check_call(command)
                 print("Note “{}” created.".format(text))

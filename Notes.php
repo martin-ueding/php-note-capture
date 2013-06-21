@@ -37,7 +37,8 @@ class Notes {
 
 		$newNote = array(
 			'text' => $text,
-			'priority' => $priority
+			'priority' => $priority,
+			'entry' => date('Y-m-d')
 		);
 
 		# Filter out duplicate notes.
