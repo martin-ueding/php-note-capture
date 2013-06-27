@@ -30,7 +30,7 @@ if (isset($_POST['text'])) {
 		</style>
 	</head>
 	<body onload="javascript:document.mainform.text.focus()">
-		<form action="index.php" method="post" name="mainform">
+		<form action="" method="post" name="mainform">
 			<input type="text" name="text" autocomplete="off" />
 			<select name="priority" size="1">
 				<option value=""></option>
