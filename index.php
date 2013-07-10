@@ -17,6 +17,8 @@ else {
 	$cssfile = "day";
 }
 
+#$cssfile = "night";
+
 ?>
 
 <!doctype html>

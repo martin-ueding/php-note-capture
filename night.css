@@ -1,9 +1,9 @@
-body, input {
+body, input, select {
 	background-color: black;
 	color: #aaa;
 }
 
-input {
+input, select {
 	border: 1px solid #aaa;
 }
 
