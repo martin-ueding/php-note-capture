@@ -1,0 +1,8 @@
+input {
+	font-size: 20px;
+}
+
+td.priority {
+	color: #444;
+	font-size: 80%;
+}

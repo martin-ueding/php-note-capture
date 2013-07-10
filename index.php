@@ -9,6 +9,14 @@ if (isset($_POST['text'])) {
 	$notes->addNote($_POST['text'], $_POST['priority']);
 }
 
+$hour = date("H");
+if (20 <= $hour || $hour <= 7) {
+	$cssfile = "night";
+}
+else {
+	$cssfile = "day";
+}
+
 ?>
 
 <!doctype html>
@@ -18,16 +26,8 @@ if (isset($_POST['text'])) {
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
 		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 		<title>Notes</title>
-		<style type="text/css">
-			input {
-				font-size: 20px;
-			}
-
-			td.priority {
-				color: #444;
-				font-size: 80%;
-			}
-		</style>
+		<link rel="stylesheet" type="text/css" href="general.css" />
+		<link rel="stylesheet" type="text/css" href="<?= $cssfile ?>.css" />
 	</head>
 	<body onload="javascript:document.mainform.text.focus()">
 		<form action="" method="post" name="mainform">

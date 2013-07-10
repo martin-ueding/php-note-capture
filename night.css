@@ -1,0 +1,12 @@
+body, input {
+	background-color: black;
+	color: #aaa;
+}
+
+input {
+	border: 1px solid #aaa;
+}
+
+td.priority {
+	color: #999;
+}
