@@ -3,6 +3,9 @@
 Changelog
 =========
 
+v1.3
+    - Option to prepend a date
+
 v1.2
     - Night mode
     - Show tasks in a table
