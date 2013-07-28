@@ -29,7 +29,7 @@ class Notes {
 		fclose($h);
 	}
 
-	public function addNote($text, $priority='') {
+	public function addNote($text, $priority='', $date=false) {
 		# Filter out empty notes.
 		if (strlen($text) == 0) {
 			return;
@@ -40,6 +40,10 @@ class Notes {
 			'priority' => $priority,
 			'entry' => date('Y-m-d')
 		);
+
+		if ($date) {
+			$newNote['text'] = date('Y-m-d').' '.$newNote['text'];
+		}
 
 		# Filter out duplicate notes.
 		foreach ($this->data as $note) {

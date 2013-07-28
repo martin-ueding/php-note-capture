@@ -6,7 +6,7 @@ require_once('Notes.php');
 $notes = new Notes();
 
 if (isset($_POST['text'])) {
-	$notes->addNote($_POST['text'], $_POST['priority']);
+	$notes->addNote($_POST['text'], $_POST['priority'], $_POST['date'] == 'true');
 }
 
 $hour = date("H");
@@ -40,6 +40,7 @@ else {
 				<option value="m">medium</option>
 				<option value="l">low</option>
 			</select>
+			<input type="checkbox" name="date" value="true" />
 			<input type="submit" />
 		</form>
 
