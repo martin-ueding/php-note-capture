@@ -5,6 +5,7 @@ Changelog
 
 v1.3.1
     - Use uppercase letters for priority
+    - Vertical align priority to top
 
 v1.3
     - Option to prepend a date
