@@ -51,7 +51,7 @@ def main():
                 command = ["task", "add", text]
                 if "priority" in note:
                     priority = note["priority"]
-                    if priority in ["l", "h", "m"]:
+                    if priority.lower() in ["l", "h", "m"]:
                         command += ["pri:{}".format(priority)]
 
                 if "entry" in note:

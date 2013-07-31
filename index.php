@@ -36,9 +36,9 @@ else {
 			<input type="text" name="text" autocomplete="off" />
 			<select name="priority" size="1">
 				<option value=""></option>
-				<option value="h">high</option>
-				<option value="m">medium</option>
-				<option value="l">low</option>
+				<option value="H">high</option>
+				<option value="M">medium</option>
+				<option value="L">low</option>
 			</select>
 			<input type="checkbox" name="date" value="true" />
 			<input type="submit" />
