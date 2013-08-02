@@ -44,15 +44,6 @@ else {
 			<input type="submit" />
 		</form>
 
-		<?php if (count($notes->data) > 0): ?>
-		<table>
-			<?php foreach ($notes->data as $note): ?>
-			<tr>
-				<td><?= htmlspecialchars($note['text']) ?></td>
-				<td class="priority"><?= $note['priority'] ?></td>
-			</tr>
-			<?php endforeach; ?>
-		</table>
-		<?php endif; ?>
+		<p><?= count($notes->data) ?> notes saved. <a href="list.php">Show notes</a></p>
 	</body>
 </html>
