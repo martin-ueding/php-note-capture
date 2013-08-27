@@ -3,6 +3,11 @@
 
 require_once('Notes.php');
 
+require_once('php-authenticator/Authenticator.php');
+
+$auth = new de\martin_ueding\authenticator\Authenticator();
+$auth->requireLogin();
+
 $notes = new Notes();
 
 if (isset($_POST['text'])) {
