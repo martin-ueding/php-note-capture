@@ -1,3 +1,0 @@
-[submodule "php-authenticator"]
-	path = php-authenticator
-	url = https://github.com/martin-ueding/php-authenticator.git
