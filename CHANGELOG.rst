@@ -3,6 +3,10 @@
 Changelog
 =========
 
+v1.3.2
+    - Let the form expire to prevent sending a form again if the POST request
+      was in the cache
+
 v1.3.1
     - Use uppercase letters for priority
     - Vertical align priority to top
