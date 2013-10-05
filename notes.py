@@ -35,6 +35,8 @@ def new_note(form):
     })
 
     print(notes)
+    with open("notes.js", "w") as f:
+        f.write(json.dumps(notes))
 
 @app.route('/', methods=["GET", "POST"])
 def new():
@@ -45,6 +47,13 @@ def new():
 
     return flask.render_template('new.html', time=1, notes=notes,
                                  notes_len=len(notes))
+
+@app.route("/list")
+def list():
+    load_notes()
+    return flask.render_template('list.html', time=1, notes=notes,
+                                 notes_len=len(notes))
+
 
 if __name__ == '__main__':
     app.run(debug=True)

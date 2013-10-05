@@ -9,9 +9,9 @@
         <link rel="stylesheet" type="text/css" href="<?= $cssfile ?>.css" />
     </head>
     <body>
-        {% if len(notes) > 0: %}
+        {% if notes_len > 0: %}
         <table>
-            {% fornote in notes %}
+            {% for note in notes %}
             <tr>
                 <td>{{ note['text'] | escape }}</td>
                 <td class="priority">{{ note['priority'] }}</td>
@@ -20,6 +20,6 @@
         </table>
         {% endif %}
 
-        <p>{{ len(notes }} notes saved. <a href="index.php">New note</a></p>
+        <p>{{ notes_len }} notes saved. <a href="/">New note</a></p>
     </body>
 </html>
