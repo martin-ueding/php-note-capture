@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+        <title>Notes</title>
+        <link rel="stylesheet" type="text/css" href="general.css" />
+        <link rel="stylesheet" type="text/css" href="{{ cssfile }}.css" />
+    </head>
+    <body onload="javascript:document.mainform.text.focus()">
+        <form action="" method="post" name="mainform">
+            <input type="text" name="text" autocomplete="off" />
+            <select name="priority" size="1">
+                <option value=""></option>
+                <option value="H">high</option>
+                <option value="M">medium</option>
+                <option value="L">low</option>
+            </select>
+            <input type="checkbox" name="date" value="true" />
+            <input type="hidden" name="formdate" value="{{ time }}" />
+            <input type="submit" />
+        </form>
+
+        <p>{{ len(notes) }} notes saved. <a href="list.php">Show notes</a></p>
+    </body>
+</html>
