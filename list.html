@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+        <title>Notes</title>
+        <link rel="stylesheet" type="text/css" href="general.css" />
+        <link rel="stylesheet" type="text/css" href="<?= $cssfile ?>.css" />
+    </head>
+    <body>
+        {% if len(notes) > 0: %}
+        <table>
+            {% fornote in notes %}
+            <tr>
+                <td>{{ note['text'] | escape }}</td>
+                <td class="priority">{{ note['priority'] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+
+        <p>{{ len(notes }} notes saved. <a href="index.php">New note</a></p>
+    </body>
+</html>
