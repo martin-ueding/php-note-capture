@@ -8,6 +8,7 @@ from __future__ import print_function
 import flask
 import json
 import datetime
+import time
 
 app = flask.Flask(__name__)
 
@@ -45,8 +46,10 @@ def new():
     if "text" in form:
         new_note(form)
 
+
     return flask.render_template('new.html', time=1, notes=notes,
-                                 notes_len=len(notes))
+                                 notes_len=len(notes),
+                                 now=int(time.time()))
 
 @app.route("/list")
 def list():
