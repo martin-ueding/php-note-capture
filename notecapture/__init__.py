@@ -78,6 +78,18 @@ def list():
     }
     return flask.render_template('list.html', **tp_vars)
 
+@app.route("/export")
+def export():
+    load_notes()
+    return json.dumps(notes)
+
+@app.route("/reset")
+def reset():
+    load_notes()
+    notes[:] = []
+    save_notes()
+
+    return "Done"
 
 if __name__ == '__main__':
     app.run(debug=True)
