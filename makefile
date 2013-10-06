@@ -4,7 +4,7 @@ all:
 
 install:
 	# Python module
-	./setup.py install --install-layout deb --root "$(DESTDIR)"
+	./setup.py install --install-layout deb --root "$(DESTDIR)/"
 	#
 	# WSGI file
 	install -d "$(DESTDIR)/var/www/notecapture"
@@ -12,7 +12,7 @@ install:
 	#
 	# Apache 2 vhost
 	install -d "$(DESTDIR)/etc/apache2/sites-available"
-	install apache2/note-capture -t "$(DESTDIR)/etc/apache2/sites-available"
+	install apache2/notecapture -t "$(DESTDIR)/etc/apache2/sites-available"
 
 .PHONY: clean
 clean:
