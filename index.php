@@ -46,5 +46,7 @@ else {
         </form>
 
         <p><?= count($notes->data) ?> notes saved. <a href="list.php">Show notes</a></p>
+
+        <p>Powered by PHP</p>
     </body>
 </html>
