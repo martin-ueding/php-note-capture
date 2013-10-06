@@ -3,7 +3,7 @@
 
 # Copyright © 2013 Martin Ueding <dev@martin-ueding.de>
 
-from __future__ import print_function
+from __future__ import absolute_import, print_function
 
 import flask
 import json
@@ -46,7 +46,9 @@ def new_note(form):
         "entry": datetime.datetime.now().strftime("%Y-%m-%d"),
     })
 
-    print(notes)
+    save_notes()
+
+def save_notes():
     with open(find_notes_file(), "w") as f:
         f.write(json.dumps(notes))
 
