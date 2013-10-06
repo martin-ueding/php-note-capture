@@ -38,6 +38,9 @@ Server
 
 Install the server part of this with ``make install``.
 
+Then you need to enable the site with ``a2ensite notecapture``. If you package
+this for Debian, you need to put this into the ``postinstall`` script.
+
 Local
 -----
 

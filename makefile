@@ -16,6 +16,7 @@ install:
 
 .PHONY: clean
 clean:
+	$(RM) -r build
 	$(RM) *.class *.jar
 	$(RM) *.o *.out
 	$(RM) *.pyc *.pyo
