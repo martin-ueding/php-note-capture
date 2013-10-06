@@ -3,8 +3,7 @@
 all:
 
 install:
-	install -d "$(DESTDIR)/usr/bin"
-	install notes-download -t "$(DESTDIR)/usr/bin"
+	./setup.py install --install-layout deb --root "$(DESTDIR)"
 
 .PHONY: clean
 clean:
