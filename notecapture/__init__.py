@@ -66,7 +66,8 @@ def new():
 def list():
     load_notes()
     return flask.render_template('list.html', time=1, notes=notes,
-                                 notes_len=len(notes))
+                                 notes_len=len(notes),
+                                 url_for_new=flask.url_for('new'))
 
 
 if __name__ == '__main__':
