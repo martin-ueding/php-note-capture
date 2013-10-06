@@ -4,9 +4,9 @@
     ServerName localhost
 
     #WSGIDaemonProcess yourapplication user=user1 group=group1 threads=5
-    WSGIScriptAlias /note-capture /var/www/note-capture/note-capture.wsgi
+    WSGIScriptAlias /note-capture /var/www/notecapture/notecapture.wsgi
 
-    <Directory /var/www/>
+    <Directory /var/www/notecapture>
         #WSGIProcessGroup yourapplication
         #WSGIApplicationGroup %{GLOBAL}
         Order deny,allow
@@ -14,7 +14,7 @@
 
         AuthType Basic
         AuthName "hello"
-        AuthUserFile /home/mu/Projekte/.htpasswd
+        AuthUserFile /home/mu/public_html/sec/.htpasswd
         Require valid-user
     </Directory>
 </VirtualHost>
