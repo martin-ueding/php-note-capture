@@ -8,12 +8,23 @@ from __future__ import print_function
 import flask
 import json
 import datetime
+import os.path
 import time
 
 app = flask.Flask(__name__)
 
 notes = []
 notes_loaded = False
+
+def find_notes_file():
+    path = [".", "/var/www/notecapture"]
+
+    for dir_ in path:
+        file_ = os.path.join(dir_, "notes.js")
+        if os.path.isfile(file_):
+            break
+
+    return file_
 
 def load_notes():
     global notes
@@ -22,7 +33,7 @@ def load_notes():
     if notes_loaded:
         return
 
-    with open("notes.js") as f:
+    with open(find_notes_file()) as f:
         notes = json.loads(f.read())
         notes_loaded = True
 
@@ -36,7 +47,7 @@ def new_note(form):
     })
 
     print(notes)
-    with open("notes.js", "w") as f:
+    with open(find_notes_file(), "w") as f:
         f.write(json.dumps(notes))
 
 @app.route('/', methods=["GET", "POST"])
