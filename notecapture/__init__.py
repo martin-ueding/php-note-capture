@@ -59,17 +59,24 @@ def new():
     if "text" in form:
         new_note(form)
 
-
-    return flask.render_template('new.html', time=1, notes=notes,
-                                 notes_len=len(notes),
-                                 now=int(time.time()))
+    tp_vars = {
+        "notes": notes,
+        "notes_len": len(notes),
+        "now": int(time.time()),
+        "url_for_list": flask.url_for('list'),
+    }
+    return flask.render_template('new.html', **tp_vars)
 
 @app.route("/list")
 def list():
     load_notes()
-    return flask.render_template('list.html', time=1, notes=notes,
-                                 notes_len=len(notes),
-                                 url_for_new=flask.url_for('new'))
+
+    tp_vars = {
+        "notes": notes,
+        "notes_len": len(notes),
+        "url_for_new": flask.url_for('new'),
+    }
+    return flask.render_template('list.html', **tp_vars)
 
 
 if __name__ == '__main__':
