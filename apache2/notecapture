@@ -1,22 +1,18 @@
 # Copyright © 2013 Martin Ueding <dev@martin-ueding.de>
 
-<VirtualHost *:80>
-    ServerName localhost
-
     #WSGIDaemonProcess yourapplication user=user1 group=group1 threads=5
-    WSGIScriptAlias /note-capture /var/www/notecapture/notecapture.wsgi
+    WSGIScriptAlias /nc /var/www/notecapture/notecapture.wsgi
 
-    <Directory /var/www/notecapture>
+    #<Directory /var/www/notecapture>
         #WSGIProcessGroup yourapplication
         #WSGIApplicationGroup %{GLOBAL}
-        Order deny,allow
-        Allow from all
+        #Order deny,allow
+        #Allow from all
 
-        AuthType Basic
-        AuthName "hello"
-        AuthUserFile /home/mu/public_html/sec/.htpasswd
-        Require valid-user
-    </Directory>
-</VirtualHost>
+        #AuthType Basic
+        #AuthName "hello"
+        #AuthUserFile /home/mu/public_html/sec/.htpasswd
+        #Require valid-user
+    #</Directory>
 
 # vim: ft=apache

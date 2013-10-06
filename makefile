@@ -10,9 +10,9 @@ install:
 	install -d "$(DESTDIR)/var/www/notecapture"
 	install notecapture.wsgi -t "$(DESTDIR)/var/www/notecapture"
 	#
-	# Apache 2 vhost
-	install -d "$(DESTDIR)/etc/apache2/sites-available"
-	install apache2/notecapture -t "$(DESTDIR)/etc/apache2/sites-available"
+	# Apache 2 configuration file
+	install -d "$(DESTDIR)/etc/apache2/conf.d"
+	install apache2/notecapture -t "$(DESTDIR)/etc/apache2/conf.d"
 
 .PHONY: clean
 clean:
