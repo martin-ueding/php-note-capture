@@ -9,7 +9,7 @@ install:
 	# WSGI file
 	install -d "$(DESTDIR)/var/www/notecapture"
 	install -m 644 notecapture.wsgi -t "$(DESTDIR)/var/www/notecapture"
-	install -m 600 -o www-data -g www-data notes.js -t "$(DESTDIR)/var/www/notecapture"
+	install -m 600 notes.js -t "$(DESTDIR)/var/www/notecapture"
 	#
 	# Apache 2 configuration file
 	install -d "$(DESTDIR)/etc/apache2/conf.d"
