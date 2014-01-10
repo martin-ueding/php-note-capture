@@ -1,11 +1,11 @@
 <?php
-# Copyright © 2013 Martin Ueding <dev@martin-ueding.de>
+# Copyright © 2013-2014 Martin Ueding <dev@martin-ueding.de>
 
 require_once('Notes.php');
 
 $notes = new Notes();
 
-if (isset($_POST['text']) && $_POST['formdate'] > time() - 60) {
+if (isset($_POST['text'])) {
     $notes->addNote($_POST['text'], $_POST['priority'], $_POST['date'] == 'true');
 }
 
@@ -41,7 +41,6 @@ else {
                 <option value="L">low</option>
             </select>
             <input type="checkbox" name="date" value="true" />
-                        <input type="hidden" name="formdate" value="<?php echo time(); ?>" />
             <input type="submit" />
         </form>
 
