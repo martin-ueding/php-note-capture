@@ -31,7 +31,7 @@ else {
         <link rel="stylesheet" type="text/css" href="general.css" />
         <link rel="stylesheet" type="text/css" href="<?= $cssfile ?>.css" />
     </head>
-    <body onload="javascript:document.mainform.text.focus()">
+    <body>
         <form action="" method="post" name="mainform">
             <input type="text" name="text" autocomplete="off" />
             <select name="priority" size="1">
