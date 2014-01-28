@@ -3,6 +3,10 @@
 Changelog
 =========
 
+v2.1
+    - Update ``notes-download`` to support SSL download via ``auth.cert``
+      supplication of a self-signed certificate.
+
 v2.0.2
     - Remove hidden field with current time from the form
 
