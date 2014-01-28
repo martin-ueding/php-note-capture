@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-# Copyright © 2013 Martin Ueding <dev@martin-ueding.de>
+# Copyright © 2013-2014 Martin Ueding <dev@martin-ueding.de>
 
 from __future__ import absolute_import, print_function
 
@@ -62,7 +62,6 @@ def new():
     tp_vars = {
         "notes": notes,
         "notes_len": len(notes),
-        "now": int(time.time()),
         "url_for_list": flask.url_for('list'),
     }
     return flask.render_template('new.html', **tp_vars)
