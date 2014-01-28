@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-# Copyright © 2013 Martin Ueding <dev@martin-ueding.de>
+# Copyright © 2013-2014 Martin Ueding <dev@martin-ueding.de>
 
 """
 Downloads the notes in the JSON format and inserts them in the taskwarrior
@@ -13,6 +13,7 @@ import configparser
 import json
 import os
 import os.path
+import requests
 import subprocess
 
 __docformat__ = "restructuredtext en"
@@ -30,19 +31,17 @@ def main():
     uri = config.get("auth", "uri")
     user = config.get("auth", "user")
     passwd = config.get("auth", "passwd")
+    cert = os.path.expanduser(config.get("auth", "cert"))
     reseturl = config.get("reset", "reseturl")
 
     if os.path.isfile(notesfile):
         os.remove(notesfile)
 
-    try:
-        subprocess.check_call(["wget", "-O", notesfile, "--user", user,
-                               "--password", passwd, uri],
-                                stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    except subprocess.CalledProcessError as e:
-        raise
+    r = requests.get(uri, auth=(user, passwd), verify=cert)
+    if r.status_code != 200:
+        print(r.status_code)
 
-    notes = load_notes()
+    notes = r.json()
 
     try:
         if len(notes) > 0:
@@ -61,21 +60,11 @@ def main():
                 subprocess.check_call(command)
                 print("Note “{}” created.".format(text))
 
-            subprocess.check_call(["wget", "-O", "/dev/null", "--user", user,
-                                   "--password", passwd, reseturl],
-                                  stdout=subprocess.PIPE,
-                                  stderr=subprocess.PIPE)
+            r = requests.get(reseturl, auth=(user, passwd), verify=cert)
         else:
             print("No new notes. Done.")
     except subprocess.CalledProcessError as e:
         raise
-
-    os.unlink(notesfile)
-
-
-def load_notes():
-    with open(notesfile) as f:
-        return json.loads(f.read())
 
 
 def _parse_args():
