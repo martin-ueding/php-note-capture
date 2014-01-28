@@ -1,7 +1,14 @@
-.. Copyright © 2013 Martin Ueding <dev@martin-ueding.de>
+.. Copyright © 2013-2014 Martin Ueding <dev@martin-ueding.de>
 
 Changelog
 =========
+
+v2.0.2
+    - Remove hidden field with current time from the form
+
+v2.0.1
+    - Do not set user in ``make install``. This needs to have some
+      ``debian/postinst`` script instead.
 
 v2.0
     - Change from PHP to Python 2 with Flask, deploy via WSGI with Apache 2
